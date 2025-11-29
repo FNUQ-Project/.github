@@ -1,403 +1,146 @@
-🎯 **Here's the complete README for the entire FNUQ project:**
 
-# FNUQ 🚀
+# FNUQ-Project 🚀
 
-**F**uck **N**o **U**EFI's **Q**EMU - A modern, macOS-native hypervisor that actually cares about your sanity.
+**F**uck **N**o **U**EFI's **Q**EMU - A modern, macOS-native hypervisor ecosystem
 
-> "Because life's too short for slow, complicated virtualization."
+> "Building virtualization tools that don't suck, for developers who value their sanity."
 
-https://swift.org
-https://developer.apple.com/macos
-LICENSE
-CONTRIBUTING.md
+---
 
-## 🎯 What is FNUQ?
+## 🎯 About This Organization
 
-FNUQ is a ground-up rewrite of virtualization for macOS - built with modern tools, for modern hardware, with developer happiness as the primary goal.
+FNUQ-Project is a collection of open-source projects dedicated to creating modern, macOS-native virtualization tools. We believe virtualization should be fast, simple, and enjoyable to use.
 
-### The Problem
-```swift
-// This is why FNUQ exists
-let qemuProblems = [
-    "❌ UEFI support that barely works",
-    "❌ 1990s-era configuration nightmares", 
-    "❌ Slow emulation on Apple Silicon",
-    "❌ Graphics that make you cry",
-    "❌ Documentation from the Mesozoic era"
-]
-```
+### Our Projects
 
-### The Solution
-```swift
-// This is FNUQ
-let fnuqBenefits = [
-    "✅ True native UEFI (not emulated)",
-    "✅ SwiftUI interface that doesn't suck",
-    "✅ Apple Silicon-optimized performance",
-    "✅ Metal-accelerated graphics",
-    "✅ Documentation you'll actually read"
-]
-```
+| Project | Status | Description |
+|---------|--------|-------------|
+| **https://github.com/FNUQ-Project/FNUQ-Core** | 🟢 Active | Core hypervisor engine and CLI |
+| **https://github.com/FNUQ-Project/FNUQ-UI** | 🟡 Planning | Modern SwiftUI interface |
+| **https://github.com/FNUQ-Project/FNUQ-UEFI** | 🟡 Planning | Native UEFI implementation |
+| **https://github.com/FNUQ-Project/FNUQ-Docs** | 🟡 Planning | Documentation and guides |
 
-## 🚀 Quick Start
+### Why We Exist
+One very simple reason is that we developed an operating system (a microkernel operating system called E-comOS). For security, we used UEFI + a 64-bit kernel. However, QEMU, unfortunately, has "less than ideal" support for UEFI. We were too lazy to develop another UTM or Broadcom's VMware Fusion—they're too large. So, we decided to rewrite a QEMU-like virtual machine software that has both a visual interface and a command-line interface for ease of use, to test our kernel.
+---
 
-### Installation
+## 🚀 Getting Started
+
+### Quick Install
 ```bash
-# Clone the project
-git clone https://github.com/FNUQ-Hypervisor/FNUQ.git
-cd FNUQ
-
-# Build everything (yes, it's this simple)
-./scripts/build-all.sh
-
-# Install system-wide
-./scripts/install.sh
-
-# Start using!
-fnuq create my-vm --memory 4 --disk 20
-fnuq start my-vm
+git clone https://github.com/FNUQ-Project/FNUQ-Core.git
+cd FNUQ-Core
+swift build -c release
 ```
 
-### Your First VM in 60 Seconds
+### Your First VM
 ```bash
 # Create a VM with sensible defaults
-fnuq create ecomos-dev \
-  --memory 8 \
-  --disk 64 \
-  --uefi \
-  --apple-silicon
+fnuq create my-vm --memory 4 --disk 20
 
 # Start it
-fnuq start ecomos-dev
+fnuq start my-vm
 
-# Or use the beautiful GUI
-open /Applications/FNUQ.app
-```
-
-## 🏗️ Project Architecture
-
-FNUQ is built as a modular system - take what you need, ignore what you don't.
-
-```
-FNUQ/
-├── 🎯 FNUQ-Core/          # Hypervisor engine (CLI)
-├── 🎨 FNUQ-UI/           # SwiftUI interface  
-├── 🔧 FNUQ-UEFI/         # Native UEFI implementation
-├── 📚 FNUQ-Docs/         # Documentation & website
-└── ⚙️ scripts/           # Build & deployment
-```
-
-### Technology Stack
-- **Language**: Swift 5.5+ (because we like nice things)
-- **Virtualization**: Hypervisor.framework (native, not emulated)
-- **UI**: SwiftUI (actually modern)
-- **Build**: Swift Package Manager (it just works)
-- **Platform**: macOS 11.0+ exclusively (we focus)
-
-## ✨ Why FNUQ?
-
-### Performance That Doesn't Suck
-| Task | QEMU | FNUQ | Improvement |
-|------|------|------|-------------|
-| Boot Time | 15s | 2s | **7.5x faster** |
-| Memory | 512MB | 128MB | **75% less** |
-| Graphics | 10 FPS | 60 FPS | **6x smoother** |
-| Setup | 30 min | 30 sec | **60x simpler** |
-
-### Features That Matter
-```swift
-// Actual code you'll find in FNUQ
-import Hypervisor
-import SwiftUI
-
-// Not this imaginary nonsense you find in other projects
-class ActuallyUsefulVM {
-    func start() async throws {
-        // Yeah, we use async/await. We're not savages.
-        let vm = try await VirtualMachine(config: .sensibleDefaults)
-        try await vm.start()
-    }
-}
-```
-
-## 🛠️ Building from Source
-
-### Prerequisites
-- macOS 11.0+ (Big Sur or newer)
-- Xcode 13.0+ or Swift 5.5+
-- An Apple Silicon Mac (Intel supported but... why?)
-
-### Development Build
-```bash
-# Clone and build
-git clone https://github.com/FNUQ-Hypervisor/FNUQ.git
-cd FNUQ
-
-# Build the core engine
-cd FNUQ-Core
-swift build
-swift run fnuq version
-
-# Build the UI
-cd ../FNUQ-UI  
-swift build
-swift run FNUQ-UI
-
-# Run tests
-swift test
-```
-
-### Custom Build Options
-```bash
-# Release build with optimizations
-swift build -c release --product FNUQ-Core
-
-# Debug build with symbols
-swift build -c debug --product FNUQ-UI
-
-# Build for specific macOS version
-swift build -Xswiftc -target -Xswiftc x86_64-apple-macosx11.0
-```
-
-## 📖 Documentation
-
-We believe documentation shouldn't be an afterthought.
-
-### 📚 FNUQ-Docs/README.md
-- FNUQ-Docs/Architecture.md - How FNUQ actually works
-- FNUQ-Docs/API.md - Code-level documentation
-- FNUQ-Docs/User-Guide.md - How to use FNUQ
-- FNUQ-Docs/Development.md - Contributing to FNUQ
-
-### 🎥 Video Guides
-- https://youtube.com/... - 5-minute setup
-- https://youtube.com/... - Power user tips
-- https://youtube.com/... - Contributor guide
-
-## 🎮 Usage Examples
-
-### Basic VM Management
-```bash
-# Create a VM
-fnuq create ubuntu-server \
-  --memory 4 \
-  --disk 40 \
-  --network nat
-
-# Start it
-fnuq start ubuntu-server
-
-# Take a snapshot
-fnuq snapshot ubuntu-server --name "pre-update"
-
-# List all VMs
+# Check status
 fnuq list
-
-# Stop gracefully
-fnuq stop ubuntu-server
 ```
 
-### Advanced Features
-```bash
-# Low-power mode (perfect for laptops)
-fnuq create dev-env --low-power --memory 2
-
-# GPU acceleration
-fnuq create gaming-vm --metal --vram 2
-
-# Direct hardware access
-fnuq create high-perf-vm --usb-passthrough --gpu-passthrough
-
-# Automated snapshots
-fnuq snapshot-policy daily --keep 7
-```
-
-### Integration with Your Workflow
-```bash
-# Use in scripts
-#!/bin/bash
-fnuq create build-agent --memory 8 --disk 100
-fnuq start build-agent
-fnuq wait-for-ssh build-agent
-./deploy-to-vm.sh build-agent
-
-# CI/CD integration
-fnuq create ci-runner --from-template linux-ci
-fnuq start ci-runner
-fnuq exec ci-runner -- ./run-tests.sh
-fnuq stop ci-runner
-```
+---
 
 ## 🤝 Contributing
 
-We welcome contributions from humans who value their sanity. Here's how to help:
+We welcome contributions! Here's how to get involved:
 
-### First Time Contributors
-1. Fork the repository
-2. Find a https://github.com/FNUQ-Hypervisor/FNUQ/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
-3. Make your changes
-4. Submit a pull request
+### For Developers
+1. Check our https://github.com/FNUQ-Project/FNUQ-Core/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+2. Read the https://github.com/FNUQ-Project/FNUQ-Docs/blob/main/DEVELOPMENT.md
+3. Join our https://github.com/orgs/FNUQ-Project/discussions
 
-### Development Setup
-```bash
-# 1. Clone your fork
-git clone https://github.com/your-username/FNUQ.git
-cd FNUQ
-
-# 2. Create a branch
-git checkout -b feature/amazing-feature
-
-# 3. Make changes and test
-cd FNUQ-Core
-swift build && swift test
-
-# 4. Commit and push
-git commit -m "Add amazing feature"
-git push origin feature/amazing-feature
-```
+### For Users
+- Report bugs via https://github.com/FNUQ-Project/FNUQ-Core/issues
+- Suggest features in https://github.com/orgs/FNUQ-Project/discussions
+- Improve our https://github.com/FNUQ-Project/FNUQ-Docs
 
 ### Code Standards
-- **Swift**: Follow https://swift.org/documentation/api-design-guidelines/
-- **Documentation**: Document public APIs
-- **Tests**: Write tests for new features
-- **Simplicity**: Complex is easy, simple is hard
+- Follow Swift API Design Guidelines
+- Write tests for new features
+- Document public APIs
+- Keep it simple and maintainable
 
-## 🐛 Troubleshooting
+---
 
-### Common Issues & Solutions
+## 📚 Documentation
 
-**"Hypervisor is not supported"**
-```bash
-# Enable virtualization in System Preferences
-# System Preferences → Security & Privacy → Privacy → Virtualization
-fnuq check-system
+| Resource | Description |
+|----------|-------------|
+| https://github.com/FNUQ-Project/FNUQ-Docs | How to use FNUQ tools |
+| https://fnuq-project.github.io/FNUQ-Docs/api/ | Developer documentation |
+| https://github.com/FNUQ-Project/FNUQ-Docs/blob/main/ARCHITECTURE.md | Project structure and design |
+| https://github.com/FNUQ-Project/FNUQ-Docs/blob/main/CONTRIBUTING.md | How to contribute |
 
-# Check system support
-sysctl kern.hv_support
+---
+
+## 🏗️ Architecture
+
+FNUQ projects follow a modular architecture:
+
+```
+FNUQ-Project/
+├── FNUQ-Core/          # Hypervisor engine (Swift CLI)
+├── FNUQ-UI/           # SwiftUI interface (Future)
+├── FNUQ-UEFI/         # Native UEFI (Future)  
+└── FNUQ-Docs/         # Documentation
 ```
 
-**Build failures**
-```bash
-# Clean build
-swift package clean
-rm -rf .build
-swift build
+### Technology Stack
+- **Language**: Swift 5.5+
+- **Virtualization**: Hypervisor.framework
+- **Platform**: macOS 11.0+
+- **Build**: Swift Package Manager
 
-# Check Swift version
-swift --version
+---
 
-# Reset dependencies
-swift package reset
-```
+## 🌟 Our Principles
 
-**Permission errors**
-```bash
-# Ensure you have the required entitlements
-codesign -d --entitlements - /path/to/fnuq
+1. **Developer Experience First** - Tools should be joyful to use
+2. **macOS Native** - Embrace the platform, don't fight it  
+3. **Simplicity** - Complex problems, simple solutions
+4. **Performance** - Fast, efficient, battery-friendly
+5. **Openness** - Build in public, welcome contributions
 
-# Reinstall with correct permissions
-./scripts/install.sh
-```
+---
 
-## 📊 Performance Benchmarks
+## 📫 Connect With Us
+- **Issues**: https://github.com/FNUQ-Project/FNUQ-Core/issues
+- **Twitter**: https://twitter.com/Saladin131211
+- **Email**: saladin510@outlook.com
+---
 
-### Real-World Performance
-| Scenario | QEMU | FNUQ | Advantage |
-|----------|------|------|-----------|
-| **Web Server Boot** | 12.3s | 1.8s | 6.8x faster |
-| **Node.js Build** | 4m 23s | 1m 12s | 3.6x faster |
-| **Memory Usage** | 1.2GB | 280MB | 76% less |
-| **Battery Impact** | High | Minimal | All day usage |
+## 📄 License
 
-### Technical Benchmarks
-```swift
-// Actual benchmark results from development
-let benchmarks = BenchmarkResults(
-    bootTime: Measurement(value: 1.8, unit: .seconds),
-    memoryOverhead: Measurement(value: 128, unit: .megabytes),
-    graphicsPerformance: Measurement(value: 60, unit: .fps),
-    powerConsumption: Measurement(value: 2.1, unit: .watts)
-)
-```
+All FNUQ-Project repositories are released under the MIT License. See individual repositories for details.
 
-## 🌟 Project Philosophy
-
-### Our Principles
-1. **Developer Happiness First** - If it's not enjoyable to use, we've failed
-2. **macOS Native** - Embrace the platform, don't fight it
-3. **Sensible Defaults** - It should work well out of the box
-4. **Progressive Disclosure** - Simple for beginners, powerful for experts
-5. **No BS** - Clear, honest documentation and communication
-
-### What We're Not
-- ❌ Another cross-platform compromise
-- ❌ A QEMU wrapper with a fresh coat of paint  
-- ❌ An academic research project
-- ❌ A vehicle for resume-driven development
-
-## 🏆 Sponsors & Backers
-
-FNUQ is made possible by these amazing organizations and individuals:
-
-### Corporate Sponsors
-https://github.com/sponsors
-
-### Individual Backers
-https://github.com/sponsors
-
+---
 
 ## 🙏 Acknowledgments
 
-- **Apple** for Hypervisor.framework and Swift
-- **The QEMU team** for showing us what *not* to do
-- **Swift community** for amazing tools and libraries
-- **Early testers** for their patience and feedback
-- **Coffee** for keeping us awake during late-night coding sessions
-
-## 🚀 Ready to Ditch QEMU?
-
-```bash
-# Join the revolution
-git clone https://github.com/FNUQ-Hypervisor/FNUQ.git
-cd FNUQ
-./scripts/build-all.sh
-
-# Experience the difference
-fnuq create my-vm
-fnuq start my-vm
-
-# Never look back
-echo "Goodbye QEMU, hello sanity! 🎉"
-```
+- Apple for Hypervisor.framework and Swift
+- The Swift community for amazing tools
+- Early contributors and testers
+- Everyone who believed virtualization could be better
 
 ---
 
 <div align="center">
 
-### **Life's too short for bad virtualization tools.**
+### **Better virtualization tools for macOS developers.**
 
-FNUQ-Docs/README.md • 
-EXAMPLES.md • 
-CONTRIBUTING.md • 
-https://discord.gg/your-invite
+https://github.com/FNUQ-Project • 
+https://github.com/FNUQ-Project/FNUQ-Docs • 
+https://github.com/FNUQ-Project/FNUQ-Docs/blob/main/CONTRIBUTING.md
 
-*FNUQ: Because your time and sanity are precious.* 🧠⚡
+*Built with ❤️ for developers who deserve better tools.*
 
 </div>
+```
 
----
-
-## 📞 Need Help?
-
-- **Documentation**: Start with FNUQ-Docs/README.md
-- **Issues**: Check https://github.com/FNUQ-Hypervisor/FNUQ/issues or create a new one
-- **Discussions**: Join the conversation on https://github.com/FNUQ-Hypervisor/FNUQ/discussions
-- **Email**: mailto:help@fnuq.dev (We actually respond
-
-## 🔄 Changelog
-
-See CHANGELOG.md for what's new in each release.
-
----
-
-*FNUQ is in active development. Expect breaking changes, amazing improvements, and the occasional bug. We're building this in public because we believe better tools should be available to everyone.*
