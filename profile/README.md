@@ -22,6 +22,7 @@ FNUQ-Project is a collection of open-source projects dedicated to creating moder
 
 ### Why We Exist
 One very simple reason is that we developed an operating system (a microkernel operating system called E-comOS). For security, we used UEFI + a 64-bit kernel. However, QEMU, unfortunately, has "less than ideal" support for UEFI. We were too lazy to develop another UTM or Broadcom's VMware Fusion—they're too large. So, we decided to rewrite a QEMU-like virtual machine software that has both a visual interface and a command-line interface for ease of use, to test our kernel.
+
 ---
 
 ## 🚀 Getting Started
