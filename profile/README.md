@@ -15,7 +15,8 @@ FNUQ-Project is a collection of open-source projects dedicated to creating moder
 
 | Project | Status | Description |
 |---------|--------|-------------|
-| **https://github.com/FNUQ-Project/FNUQ-Core** | 🟢 Active | Core hypervisor engine and CLI |
+| **https://github.com/FNUQ-Project/FNUQ-Core** | 🟢 Active | Core hypervisor engine  |
+| **https://github.com/FNUQ-Project/FnuqCommand** | 🟢 Active |CLI|
 | **https://github.com/FNUQ-Project/FNUQ-UI** | 🟡 Planning | Modern SwiftUI interface |
 | **https://github.com/FNUQ-Project/FNUQ-UEFI** | 🟡 Planning | Native UEFI implementation |
 | **https://github.com/FNUQ-Project/FNUQ-Docs** | 🟡 Planning | Documentation and guides |
