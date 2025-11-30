@@ -52,13 +52,12 @@ fnuq list
 We welcome contributions! Here's how to get involved:
 
 ### For Developers
-1. Check our https://github.com/FNUQ-Project/FNUQ-Core/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
-2. Read the https://github.com/FNUQ-Project/FNUQ-Docs/blob/main/DEVELOPMENT.md
-3. Join our https://github.com/orgs/FNUQ-Project/discussions
+Check our https://github.com/FNUQ-Project/FNUQ-Core/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+
 
 ### For Users
 - Report bugs via https://github.com/FNUQ-Project/FNUQ-Core/issues
-- Suggest features in https://github.com/orgs/FNUQ-Project/discussions
+
 - Improve our https://github.com/FNUQ-Project/FNUQ-Docs
 
 ### Code Standards
@@ -69,16 +68,7 @@ We welcome contributions! Here's how to get involved:
 
 ---
 
-## 📚 Documentation
 
-| Resource | Description |
-|----------|-------------|
-| https://github.com/FNUQ-Project/FNUQ-Docs | How to use FNUQ tools |
-| https://fnuq-project.github.io/FNUQ-Docs/api/ | Developer documentation |
-| https://github.com/FNUQ-Project/FNUQ-Docs/blob/main/ARCHITECTURE.md | Project structure and design |
-| https://github.com/FNUQ-Project/FNUQ-Docs/blob/main/CONTRIBUTING.md | How to contribute |
-
----
 
 ## 🏗️ Architecture
 
@@ -118,7 +108,7 @@ FNUQ-Project/
 
 ## 📄 License
 
-All FNUQ-Project repositories are released under the MIT License. See individual repositories for details.
+All FNUQ-Project repositories are released under the GNU AGPL License. See individual repositories for details.
 
 ---
 
